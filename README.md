@@ -12,17 +12,23 @@ The site features a set of views to make the process appealing to visitors:
 - Details for a specific show
 - Search results view for a given query
 
-## How to launch the application
+## Technical information
 
-### Requirements
+### How to launch the application
+
+#### Requirements
 
 > The application has been built with Node version 16.
 
 - Node
 - Git
 
-### Instructions
+#### Instructions
 
 - Clone the [repository](https://github.com/DanPlaza/dans-movie-lib.git)
 - Install the dependencies by running `npm install` in a terminal
 - Start the application by executing `npm run dev`
+
+### Tests
+
+Unit tests have been created by means of Vitest. To execute them run `npm run test` in a terminal.
