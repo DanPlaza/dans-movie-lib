@@ -1,6 +1,6 @@
 import MovieDBService from '@/services/moviedb.service'
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import type { MovieImages, MovieInfo } from '@/interfaces/moviedb.interface'
+import type { MovieImages, MovieInfo, MovieSearchResult } from '@/interfaces/moviedb.interface'
 import axios from '@/utils/axios'
 import { movieImagesMock, movieInfoMock, movieListMock } from './moviedb.service.test-data'
 
@@ -42,9 +42,12 @@ describe('MovieDB Service', () => {
   })
 
   it('should return the lists of movies matching the query', async () => {
-    const expectedResponse: MovieInfo[] = movieListMock
+    const expectedResponse: MovieSearchResult[] = movieListMock.map((movieItem) => ({
+      show: movieItem,
+      score: Math.random(),
+    }))
     setMockResponse(expectedResponse)
-    const moviesRes: MovieInfo[] = await MovieDBService.searchMovie('wolves')
+    const moviesRes: MovieSearchResult[] = await MovieDBService.searchMovie('wolves')
 
     expect(moviesRes).toEqual(expectedResponse)
   })
