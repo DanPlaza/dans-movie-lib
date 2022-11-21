@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import type { RouteRecordRaw } from "vue-router"
 import Home from '@/views/Home.vue'
 import MovieDetails from '@/views/MovieDetails.vue'
+import MovieSearch from '@/views/MovieSearch.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -14,6 +15,12 @@ const routes: RouteRecordRaw[] = [
     name: 'Movie Details',
     component: MovieDetails,
     props: true,
+  },
+  {
+    path: '/search',
+    name: 'Search Movies',
+    component: MovieSearch,
+    props: route => ({ query: route.query.q })
   },
 ]
 

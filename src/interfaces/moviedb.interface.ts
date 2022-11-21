@@ -148,3 +148,8 @@ export interface MovieImages {
 export interface MoviesByGenre {
   [genre: string]: MovieInfo[]
 }
+
+export interface MovieSearchResult {
+  score: number,
+  show: MovieInfo,
+}

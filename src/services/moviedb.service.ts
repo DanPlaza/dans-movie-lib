@@ -1,6 +1,6 @@
 import axios from '@/utils/axios'
 import type { AxiosResponse } from 'axios'
-import type { MovieImages, MovieInfo } from '@/interfaces/moviedb.interface'
+import type { MovieImages, MovieInfo, MovieSearchResult } from '@/interfaces/moviedb.interface'
 
 
 /**
@@ -38,12 +38,12 @@ async function getMovies(page: number = 1): Promise<MovieInfo[]> {
 /**
  * Retrieves a list of movies that match a given query string
  * @param {string} queryText The text to search for
- * @returns {Promise<MovieInfo[]>} The list of movies that match the text
+ * @returns {Promise<MovieSearchResult[]>} The list of movies that match the text
  */
-async function searchMovie(queryText: string): Promise<MovieInfo[]> {
+async function searchMovie(queryText: string): Promise<MovieSearchResult[]> {
   const params = new URLSearchParams()
-  params.append('query', queryText)
-  const response: AxiosResponse<MovieInfo[]> = await axios.get('/search/shows', { params })
+  params.append('q', queryText)
+  const response: AxiosResponse<MovieSearchResult[]> = await axios.get('/search/shows', { params })
   return response.data
 }
 

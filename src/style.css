@@ -115,6 +115,10 @@ h5, h6 {
   font-size: 1em;
 }
 
+p {
+  margin-bottom: var(--dml-space-md);
+}
+
 .dml-text-bold {
   font-weight: 600;
 }
@@ -125,6 +129,10 @@ h5, h6 {
 
 .container {
   margin: 0 auto;
+}
+
+.sr-only {
+  display: none;
 }
 
 @media only screen and (min-width: 900px) {
