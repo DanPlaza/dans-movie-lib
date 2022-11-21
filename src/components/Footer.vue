@@ -15,7 +15,7 @@ const currentYear = new Date().getFullYear()
   width: 100%;
   height: 4rem; 
   display: flex;
-  background-color: var(--dml-color-primary-dark);
+  background-color: var(--dml-color-primary);
   color: var(--dml-color-secondary-dark);
 }
 

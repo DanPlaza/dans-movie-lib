@@ -115,6 +115,13 @@ h5, h6 {
   font-size: 1em;
 }
 
+.dml-text-bold {
+  font-weight: 600;
+}
+
+.dml-pointer {
+  cursor: pointer;
+}
 
 .container {
   margin: 0 auto;

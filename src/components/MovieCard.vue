@@ -11,12 +11,13 @@ const yearMatches = props.movieInfo.premiered?.match(/(\d{4})-\d{2}-\d{2}/)
 const premieredYear = yearMatches ? yearMatches[1] : ''
 
 const goToDetails = (movieId: number) => {
+  // TODO: Check if route matches the current one to prevent navigation
   router.push(`/movie/${movieId}`)
 }
 </script>
 
 <template>
-  <Card class="dml-movie-card" background-shade="dark" @click="goToDetails(movieInfo.id)">
+  <Card class="dml-movie-card dml-pointer" background-shade="dark" @click="goToDetails(movieInfo.id)">
     <img :src="movieInfo.image.medium" :alt="movieInfo.name">
     <section class="dml-movie-card__info">
       <h4>{{ movieInfo.name }} <span v-if="premieredYear">({{ premieredYear }})</span></h4>
@@ -28,7 +29,6 @@ const goToDetails = (movieId: number) => {
 .dml-movie-card {
   display: flex;
   flex-direction: column;
-  cursor: pointer;
 }
 
 .dml-movie-card img {
