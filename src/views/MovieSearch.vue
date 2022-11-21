@@ -5,12 +5,21 @@ import SearchInput from '@/components/SearchInput.vue'
 import MovieDBService from '@/services/moviedb.service'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
+import { onBeforeRouteUpdate } from "vue-router"
 
 const props = defineProps<{
   query: string
 }>()
 
-const movieResults: Ref<MovieSearchResult[]> = ref(await MovieDBService.searchMovie(props.query))
+let movieResults: Ref<MovieSearchResult[]> = ref(await MovieDBService.searchMovie(props.query))
+
+onBeforeRouteUpdate(async(to, from, next) => {
+  const newQuery: string = to.query['q']?.toString() ?? ''
+  if (newQuery) {
+    movieResults.value = await MovieDBService.searchMovie(newQuery)
+  }
+  next()
+})
 </script>
 
 <template>

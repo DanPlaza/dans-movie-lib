@@ -28,15 +28,16 @@ const openOverlay = (imageUrl: string) => {
       />
       <section>
         <h5>Summary:</h5>
-        <p v-html="movie.summary"></p>
+        <p v-html="movie.summary || '--'"></p>
 
         <h5>Rating:</h5>
-        <p>{{ movie.rating.average }}</p>
+        <p>{{ movie.rating.average || '--' }}</p>
 
         <h5>Genres:</h5>
-        <p><span class="dml-movie-details__genre" v-for="genre in movie.genres">{{ genre }}</span></p>
+        <p v-if="movie.genres.length"><span class="dml-movie-details__genre" v-for="genre in movie.genres">{{ genre }}</span></p>
+        <p v-else>--</p>
 
-        <Scroller header="Pictures">
+        <Scroller v-if="movieImages.length" header="Pictures">
           <a v-for="image in movieImages" :key="image.id" class="dml-pointer" @click="openOverlay(image.resolutions.original.url)">
             <picture v-if="image.resolutions.medium || image.resolutions.original">
               <source :srcset="image.resolutions.medium?.url || ''" type="image/jpg">

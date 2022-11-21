@@ -23,8 +23,7 @@ describe('MovieCard component', () => {
 
   it('should display the correct image', () => {
     const wrapper = createWrapper()
-    const image = wrapper.find('img')
-    expect(image.attributes()['src']).toEqual('https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg')
-    expect(image.attributes()['alt']).toEqual('Under the Dome')
+    const imageSource = wrapper.find('source')
+    expect(imageSource.attributes()['srcset']).toEqual('https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg')
   })
 })
