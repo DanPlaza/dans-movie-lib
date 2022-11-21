@@ -6,7 +6,12 @@ import Footer from '@/components/Footer.vue'
 <template>
   <TopBar/>
   <div class="dml-main">
-    <router-view></router-view>
+    <Suspense>
+      <router-view></router-view>
+      <template #fallback>
+        Loading...
+      </template>
+    </Suspense>
   </div>
   <Footer/>
   <!-- Overlay -->
