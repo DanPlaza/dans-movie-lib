@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from "vue-router"
 import Home from '@/views/Home.vue'
 import MovieDetails from '@/views/MovieDetails.vue'
 import MovieSearch from '@/views/MovieSearch.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -22,6 +23,7 @@ const routes: RouteRecordRaw[] = [
     component: MovieSearch,
     props: route => ({ query: route.query.q })
   },
+  { path: '/:pathMatch(.*)', component: NotFound }
 ]
 
 const router = createRouter({
